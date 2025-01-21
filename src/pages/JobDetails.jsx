@@ -7,7 +7,21 @@ function JobDetails() {
   const { id } = useParams();
   const job = jobs.find((job) => job.id === parseInt(id));
 
-  if (!job) return <p className="text-red-500 text-center mt-8">Job not found</p>;
+  if (!job) return (
+    <div className="bg-white text-gray-900 min-h-screen flex flex-col">
+        <Navbar />
+        <div className="flex-grow flex flex-col p-8 w-full">
+            <div className="bg-red-100 p-8 rounded-lg shadow-lg w-full border border-red-200 max-w-4xl mx-auto flex-grow text-center">
+                <h1 className="text-4xl font-bold text-red-600">Job not found</h1>
+                <p className="mt-4 text-lg text-red-500">The job you are looking for does not exist or has been removed.</p>
+                <Link to="/jobs" className="text-white bg-red-600 px-6 py-3 mt-8 inline-block rounded-lg shadow-md hover:bg-red-700 transition">
+                    Back to Jobs
+                </Link>
+            </div>
+        </div>
+        <Footer />
+    </div>
+);
 
 return (
     <div className="bg-white text-gray-900 min-h-screen flex flex-col">
@@ -39,5 +53,4 @@ return (
     </div>
 );
 }
-
 export default JobDetails;
